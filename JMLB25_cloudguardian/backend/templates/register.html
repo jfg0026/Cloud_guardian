@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-[80vh] animate-fade">
+    <form method="POST" class="bg-gray-100 dark:bg-gray-900 p-8 rounded-lg shadow-lg w-full max-w-md">
+        {% csrf_token %}
+        <h2 class="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Registro</h2>
+
+        <!-- Usuario -->
+        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Usuario</label>
+        <input type="text" name="username" required
+            class="w-full p-2 mb-4 rounded bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+
+        <!-- Contraseña -->
+        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Contraseña</label>
+        <input type="password" name="password1" required
+            class="w-full p-2 mb-4 rounded bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+
+        <!-- Repetir contraseña -->
+        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Repetir contraseña</label>
+        <input type="password" name="password2" required
+            class="w-full p-2 mb-6 rounded bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+
+        <!-- Botón registro -->
+        <button type="submit"
+                class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded shadow focus:ring-2 focus:ring-green-400 transition">
+            Registrarse
+        </button>
+    </form>
+</div>
+{% endblock %}
+
+

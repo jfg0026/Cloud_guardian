@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Rutas Protegidas{% endblock %}
+
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Rutas Protegidas</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <!-- Añadir ruta -->
+    <input type="text" name="ruta_add"  value="/{{ user.username }}/" placeholder="Nueva ruta a proteger"
+        class="w-full p-2 mb-2 rounded bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white">
+    <button type="submit" name="action" value="add"
+        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded mb-4 transition">
+        Añadir Ruta
+    </button>
+
+    <!-- Eliminar ruta -->
+    <input type="text" name="ruta_delete" placeholder="Ruta a eliminar"
+        class="w-full p-2 mb-2 rounded bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white">
+    <button type="submit" name="action" value="delete"
+            class="bg-yellow-600 hover:bg-yellow-700 text-black dark:text-white px-4 py-2 rounded transition">
+        Eliminar Ruta
+    </button>
+</form>
+
+<!-- Lista de rutas actuales -->
+<div class="mt-8">
+    <h3 class="text-lg font-semibold mb-2 text-blue-600 dark:text-blue-400">Rutas actuales protegidas:</h3>
+    <ul class="list-disc list-inside text-gray-800 dark:text-gray-200">
+        {% for ruta in rutas %}
+            <li>{{ ruta }}</li>
+        {% empty %}
+            <li>No hay rutas protegidas actualmente.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
+
